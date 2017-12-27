@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+
+<html lang=en>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE-Edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>pintext</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+        crossorigin="anonymous">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.0.5/vue.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+</head>
+
+<body>
+    <!--     
+    Number of Cards - 5, 8, 10, 12, 15, 18, 20, 24
+    Behind Tiles - Color, Image - Choose Reddit (Use Modal for this), Number
+    Difficulty Level - Easy, Medium, Hard
+     -->
+    <div class="container" id="game-settings">
+        <h3><span class="glyphicon glyphicon-chevron-down" aria-hidden="true" @click="toggleDisplay"></span> Game Settings </h3>
+        <div v-if="displayStatus" class="game-settings-container">
+            <div class="game-settings-item">
+                <div class="difficulty">
+                    <p>Difficulty Level</p>
+                    <button class="button">Easy</button>
+                    <button class="button">Medium</button>
+                    <button class="button">Hard</button>
+                </div>
+            </div>
+
+            <div class="game-settings-item">
+                <div class="kind-of-tiles">
+                    <p>Background for tiles</p>
+                    <button class="button">Color</button>
+                    <button class="button">Image</button>
+                    <button class="button">Number</button>
+                    <button class="button">Cards</button>
+                </div>
+            </div>
+
+            <div class="game-settings-item">
+                <div class="number-of-tiles">
+                    <p>Number of unique tiles
+                        <p>
+
+                            <button class="button">5</button>
+                            <button class="button">8</button>
+                            <button class="button">10</button>
+                            <button class="button">12</button>
+                            <button class="button">15</button>
+                            <button class="button">18</button>
+                            <button class="button">20</button>
+                            <button class="button">24</button>
+                </div>
+            </div>
+
+
+        </div>
+        <div>
+            <button @click="startGame">Start Game</button>
+        </div>
+
+    </div>
+
+</body>
+
+<script>
+    new Vue({
+        el: "#game-settings",
+        data: {
+            displayStatus: true
+        },
+        methods: {
+            toggleDisplay: function () {
+                this.displayStatus = !this.displayStatus;
+            },
+            startGame: function() {
+                this.displayStatus = false;
+            }
+        }
+    })
+
+</script>
+
+<style>
+    .container {
+        /* margin: auto; */
+        /* border: 2px solid black; */
+        padding: 5px;
+        padding-bottom: 10px;
+    }
+
+    .game-settings-item {
+        display: inline-block;
+    }
+
+    .button {
+        background-color: lightgrey;
+        box-shadow: 1px 1px 1px grey;
+        /* Green */
+        border: 1px solid #aaa;
+        border-radius: 12px;
+        color: black;
+        padding: 5px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 14px;
+        margin: 2px 2px 12px 2px;
+        cursor: pointer;
+    }
+
+    .number-of-tiles .button:focus {
+        /* border-radius: 50%; */
+        background-color: salmon;
+    }
+
+    .kind-of-tiles .button:focus {
+        /* border-radius: 50%; */
+        background-color: salmon;
+    }
+
+    .difficulty .button:focus {
+        /* border-radius: 50%; */
+        background-color: salmon;
+    }
+
+    .difficulty p,
+    .number-of-tiles p,
+    .kind-of-tiles p {
+        /* margin: auto;
+        display: inline-block;
+        border: 2px solid green; */
+        color: #555;
+        font-weight: bold;
+    }
+
+    .difficulty button,
+    .number-of-tiles button,
+    .kind-of-tiles button {
+        /* margin: auto;
+        display: inline-block;
+        border: 2px solid green; */
+        /* color: #555; */
+        font-weight: 400;
+    }
+
+    .difficulty,
+    .number-of-tiles,
+    .kind-of-tiles {
+        margin: 2px;
+        display: inline-block;
+        border: 2px solid #eee;
+        padding: 5px;
+    }
+</style>
+
+</html>

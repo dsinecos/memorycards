@@ -52,7 +52,7 @@
 
                 this.gameBoardArray = shuffledGameBoardArray;
 
-                console.log(this.gameBoardArray);
+                // console.log(this.gameBoardArray);
 
                 /*
                 var colorArray = self.$store.state.colorArray.map(function (currentElement) {
@@ -147,7 +147,7 @@
 
             },
             cardClicked: function (colorID, cardID) {
-                console.log(this.gameBoardArray);
+                // console.log(this.gameBoardArray);
 
                 //console.log("Inside cardClicked");
                 var self = this;

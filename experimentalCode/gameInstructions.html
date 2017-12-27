@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+
+<html lang=en>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE-Edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>pintext</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+        crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.0.5/vue.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+</head>
+
+<body>
+    <!--     
+    Number of Cards - 5, 8, 10, 12, 15, 18, 20, 24
+    Behind Tiles - Color, Image - Choose Reddit (Use Modal for this), Number
+    Difficulty Level - Easy, Medium, Hard
+     -->
+
+    <div class="container" id="game-instructions">
+        <h3><span class="glyphicon glyphicon-chevron-down icon" aria-hidden="true" @click="toggleInstructionDisplay"></span> Instructions
+            </h3>
+        <div v-if="displayInstructionStatus" class="instructions">
+            <ol>
+                <li>
+                    <p>Click a Tile to reveal the Image (or Color) behind it</p>
+                </li>
+                <li>
+                    <p>Click two tiles consecutively with the same Image (or Color) to eliminate them from the board</p>
+                </li>
+                <li>
+                    <p>Clear all the tiles in as few clicks and as quickly to score the maximum</p>
+                </li>
+            </ol>
+        </div>
+    </div>
+
+</body>
+
+<script>
+    new Vue({
+        el: "#game-instructions",
+        data: {
+            displayInstructionStatus: true
+        },
+        methods: {
+            toggleInstructionDisplay: function () {
+                this.displayInstructionStatus = !this.displayInstructionStatus;
+            }
+
+        }
+    })
+
+</script>
+
+<style>
+    .container {
+        /* margin: auto; */
+        /* border: 2px solid black; */
+        padding: 5px;
+        padding-bottom: 10px;
+    }
+
+    .instructions {
+        border: 2px solid #eee;
+        padding: 5px;
+        display: inline-block;
+    }
+
+    .icon {
+        cursor: pointer;
+    }
+</style>
+
+</html>

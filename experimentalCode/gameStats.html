@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+
+<html lang=en>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE-Edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>pintext</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+        crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.0.5/vue.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+</head>
+
+<body>
+
+    <div class="container" id="game-stats">
+
+        <h3>Game Stats</h3>
+
+        <div class="game-stats-component">
+            <h3 id="timer">{{ hours }} <span class="timer-text">Hours</span> {{ minutes }} <span class="timer-text">Minutes</span> {{ seconds
+                }} <span class="timer-text">Seconds</span></h3>
+            <br>
+            <button @click="start">Start</button>
+            <button @click="stop">Stop</button>
+            <button @click="reset">Reset</button>
+        </div>
+
+        <div class="game-stats-component">
+            <h4> # Clicks : </h4>
+            <h4> Score : </h4>
+        </div>
+
+
+    </div>
+
+</body>
+
+<script>
+    new Vue({
+        el: '#game-stats',
+        data: {
+            // state: "started",
+            startTime: 0,
+            currentTime: 0,
+            interval: null,
+            millisecondsWhenPaused: 0,
+        },
+        // mounted: function () {
+        //     this.interval = setInterval(this.updateCurrentTime, 1000);
+        // },
+        // destroyed: function () {
+        //     clearInterval(this.interval)
+        // },
+        computed: {
+            time: function () {
+                return this.hours + ':' + this.minutes + ':' + this.seconds;
+            },
+            milliseconds: function () {
+                return this.currentTime - this.startTime;
+            },
+            hours: function () {
+                var lapsed = this.milliseconds;
+                var hrs = Math.floor((lapsed / 1000 / 60 / 60));
+                return hrs >= 10 ? hrs : '0' + hrs;
+            },
+            minutes: function () {
+                var lapsed = this.milliseconds;
+                var min = Math.floor((lapsed / 1000 / 60) % 60);
+                return min >= 10 ? min : '0' + min;
+            },
+            seconds: function () {
+                var lapsed = this.milliseconds;
+                var sec = Math.ceil((lapsed / 1000) % 60);
+                return sec >= 10 ? sec : '0' + sec;
+            }
+        },
+        methods: {
+            reset: function () {
+                // this.state = "started";
+                this.startTime = Date.now();
+                this.currentTime = Date.now();
+            },
+            start: function () {
+                this.startTime = Date.now();
+                this.currentTime = Date.now();
+                this.interval = setInterval(this.updateCurrentTime, 1000);
+            },
+            stop: function () {
+                clearInterval(this.interval);
+                this.startTime = 0;
+                this.currentTime = 0;
+            },
+            updateCurrentTime: function () {
+                this.currentTime = Date.now();
+            }
+        }
+    });
+
+</script>
+
+<style>
+    #timer {
+        background-color: #34495E;
+        color: #ECF0F1;
+        display: inline-block;
+        padding: 10px;
+        border: 2px groove white;
+    }
+
+    .timer-text {
+        color: #1ABB9A;
+        font-size: 12px;
+    }
+
+    .game-stats-component {
+        display: inline-block;
+        vertical-align: top;
+        margin: 5px;
+        padding: 5px;
+        /* border: 2px groove grey; */
+    }
+</style>
+
+</html>
