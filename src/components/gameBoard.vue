@@ -16,6 +16,7 @@
         data: function () {
             return {
                 lastClickedColorID: 0,
+                lastClickedCardID: 0,
                 gameBoardArray: []
             }
         },
@@ -157,7 +158,7 @@
                 function checkForMatchAgainstColorID() {
                     //console.log("Inside checkForMatchAgainstColorID");
                     //console.log(colorID);
-                    if (colorID === self.lastClickedColorID) {
+                    if (colorID === self.lastClickedColorID && cardID !== self.lastClickedCardID) {
                         return true;
                     } else {
                         return false;
@@ -211,6 +212,7 @@
                 } else {
                     toggleIsColorActiveStatus();
                     self.lastClickedColorID = colorID;
+                    self.lastClickedCardID = cardID;
                 }
                 // If yes - Change isCardActive status (Search for cardID against the current colorID)
                 //          Update lastClickedColorID (To zero)
