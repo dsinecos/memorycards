@@ -7,19 +7,19 @@
             <div class="game-settings-item">
                 <p>Difficulty Level</p>
                 <game-button v-for="item in difficultyLevel" :key="item.buttonID" :buttonText="item.buttonText" buttonType="difficultyLevel"
-                    :isActive="item.isActive" @gameSettingButtonClicked="buttonClicked" :disabled="item.isDisabled" :isDisabled="item.isDisabled"></game-button>
+                    :isActive="item.isActive" @gameSettingButtonClicked="buttonClicked"  :isDisabled="item.isDisabled"></game-button>
             </div>
 
             <div class="game-settings-item">
                 <p>Background for tiles</p>
                 <game-button v-for="item in cardBackground" :key="item.buttonID" :buttonText="item.buttonText" buttonType="cardBackground"
-                    :isActive="item.isActive" @gameSettingButtonClicked="buttonClicked"></game-button>
+                    :isActive="item.isActive" @gameSettingButtonClicked="buttonClicked" :isDisabled="item.isDisabled"></game-button>
             </div>
 
             <div class="game-settings-item">
                 <p>Number of unique tiles</p>
                 <game-button v-for="item in numOfUniqueCards" :key="item.buttonID" :buttonText="item.buttonText" buttonType="numOfUniqueCards"
-                    :isActive="item.isActive" @gameSettingButtonClicked="buttonClicked"></game-button>
+                    :isActive="item.isActive" @gameSettingButtonClicked="buttonClicked" :isDisabled="item.isDisabled"></game-button>
             </div>
 
         </div>
@@ -55,13 +55,13 @@
                         'buttonID': 2,
                         'buttonText': 'Medium',
                         'isActive': false,
-                        'isDisabled': false
+                        'isDisabled': true
                     },
                     {
                         'buttonID': 3,
                         'buttonText': 'Hard',
                         'isActive': false,
-                        'isDisabled': false
+                        'isDisabled': true
                     }
                 ],
                 'cardBackground': [
@@ -73,17 +73,20 @@
                     {
                         'buttonID': 2,
                         'buttonText': 'Image',
-                        'isActive': false
+                        'isActive': false,
+                        'isDisabled': true
                     },
                     {
                         'buttonID': 3,
                         'buttonText': 'Number',
-                        'isActive': false
+                        'isActive': false,
+                        'isDisabled': true
                     },
                     {
                         'buttonID': 4,
                         'buttonText': 'Cards',
-                        'isActive': false
+                        'isActive': false,
+                        'isDisabled': true
                     },
                 ],
                 'numOfUniqueCards': [
@@ -105,27 +108,32 @@
                     {
                         'buttonID': 4,
                         'buttonText': 12,
-                        'isActive': false
+                        'isActive': false,
+                        'isDisabled': true
                     },
                     {
                         'buttonID': 5,
                         'buttonText': 15,
-                        'isActive': false
+                        'isActive': false,
+                        'isDisabled': true
                     },
                     {
                         'buttonID': 6,
                         'buttonText': 18,
-                        'isActive': false
+                        'isActive': false,
+                        'isDisabled': true
                     },
                     {
                         'buttonID': 7,
                         'buttonText': 20,
-                        'isActive': false
+                        'isActive': false,
+                        'isDisabled': true
                     },
                     {
                         'buttonID': 8,
                         'buttonText': 24,
-                        'isActive': false
+                        'isActive': false,
+                        'isDisabled': true
                     },
                 ]
             }
