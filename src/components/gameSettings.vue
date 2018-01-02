@@ -161,7 +161,9 @@
                 } else if (this.gameSettings.cardBackground === 'Color') {
                     // console.log("Check inside if else ");
                     this.difficultyLevel.forEach(function (item) {
-                        item.isDisabled = false;
+                        if(item.buttonText === 'Easy') {
+                            item.isDisabled = false;
+                        }                        
                     });
                 }
 
